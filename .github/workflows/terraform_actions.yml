@@ -1,0 +1,25 @@
+name: Terraform actions
+on: push
+jobs:
+  tf:
+    runs-on: ubuntu-latest
+    steps:
+      - name: install terraform
+        run: |
+          curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+          sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+          sudo apt-get update && sudo apt-get install terraform
+          echo "Terraform installed"
+
+      - name: export AWS keys
+        run: |
+          export AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+          export AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+
+      - name: terraform init
+        run: |
+          terraform init
+
+      - name: terraform plan
+        run: |
+          terraform plan
