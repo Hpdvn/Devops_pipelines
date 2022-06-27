@@ -4,6 +4,7 @@ module "ec2_instance" {
 
   name = "ec2-jupyter"
 
+  ami                    = "ami-052efd3df9dad4825"
   instance_type          = "t2.micro"
   key_name               = "jupyter"
   monitoring             = true
