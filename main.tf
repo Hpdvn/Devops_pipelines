@@ -6,7 +6,6 @@ module "ec2_instance" {
 
   ami                    = "ami-052efd3df9dad4825"
   instance_type          = "t2.micro"
-  key_name               = "jupyter"
   monitoring             = true
 
   vpc_security_group_ids = [aws_security_group.ec2_instance_sg.id]
@@ -46,5 +45,5 @@ resource "aws_subnet" "my_subnet" {
     vpc_id = "${aws_vpc.my_vpc.id}"
     cidr_block = "10.0.1.0/24"
     map_public_ip_on_launch = "true"
-    availability_zone = "us-east-1"
+    availability_zone = "us-east-1a"
 }
