@@ -1,8 +1,8 @@
 {
     "variables": {
         "region": "us-east-1",
-        "ssh_username": "ubuntu",
-        "base_ami": "ami-07d8796a2b0f8d29c",
+        "ssh_username": "devops_pipeline",
+        "base_ami": "ami-052efd3df9dad4825",
         "instance_type": "t2.micro",
         "subnet_id": "subnet-0041859bc42950775",
         "temporary_security_group_source_cidrs": "217.26.204.244/32",
