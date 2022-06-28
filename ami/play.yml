@@ -6,14 +6,11 @@
     - name: Install Python3
       apt: name=python3 update_cache=yes state=latest
 
-      - name: Install jupyter
-      pip:
-        name: jupyter-console==5.0
-        virtualenv_python: python2.7
+    - name: Install jupyter
+      apt: name=jupyter-console update_cache=yes state=latest
 
-      - name: Install notebook
-      pip:
-        name: notebook==4.2.1
-        virtualenv_python: python2.7
+    - name: Install notebook
+      apt: name=notebook update_cache=yes state=latest
+        
       
       
