@@ -2,10 +2,9 @@
     "variables": {
         "region": "us-east-1",
         "ssh_username": "ubuntu",
-        "base_ami": "ami-052efd3df9dad4825",
+        "base_ami": "ami-08d4ac5b634553e16",
         "instance_type": "t2.micro",
         "subnet_id": "subnet-0041859bc42950775",
-        "temporary_security_group_source_cidrs": "217.26.204.244/32",
         "associate_public_ip_address": "true"
     },
     "builders": [

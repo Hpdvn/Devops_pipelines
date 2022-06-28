@@ -39,6 +39,9 @@ jobs:
       AWS_ACCESS_KEY_ID : ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY : ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     steps :
+      - name: Print ubuntu version
+        run : lsb_release -a
+
       - name: install packer
         run: |
           sudo apt-get install unzip --yes && \
@@ -47,24 +50,28 @@ jobs:
           sudo mv packer /usr/local/bin && \
           rm packer_1.5.1_linux_amd64.zip
 
+      - name: install ansible
+        run: |
+          sudo apt update && \
+          sudo apt install software-properties-common --yes && \
+          sudo apt-add-repository --update ppa:ansible/ansible --yes && \
+          sudo apt install ansible --yes
+
       - name: cd to repo directory 
         uses: actions/checkout@v3
 
       - name: ls
         run : ls ${{ github.workspace }}
 
-      - name: cd ami
+      - name: packer validate
         run : |
           cd ami
-
-      - name: packer validate
-        run :
-          packer validate ami\build_ami.json  
+          ls
+          packer validate build_ami.json  
 
       - name: packer build
         run : |
-          packer build \
-          -var 'temporary_security_group_source_cidrs="$(curl -s https://checkip.amazonaws.com)/32"' \
-          build_ami.json
+          cd ami
+          packer build build_ami.json
 
 
