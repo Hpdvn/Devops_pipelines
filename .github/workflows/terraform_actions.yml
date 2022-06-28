@@ -50,6 +50,13 @@ jobs:
           sudo mv packer /usr/local/bin && \
           rm packer_1.5.1_linux_amd64.zip
 
+      - name: install ansible
+        run: |
+          sudo apt update && \
+          sudo apt install software-properties-common --yes && \
+          sudo apt-add-repository --update ppa:ansible/ansible --yes && \
+          sudo apt install ansible --yes
+
       - name: cd to repo directory 
         uses: actions/checkout@v3
 
