@@ -16,12 +16,9 @@
             "source_ami": "{{user `base_ami`}}",
             "instance_type": "{{user `instance_type`}}",
             "ssh_username": "{{user `ssh_username`}}",
-            "ami_name": "AMI-Apache-{{ isotime \"01022006-150405\"}}",
+            "ami_name": "AMI-{{timestamp}}",
             "temporary_security_group_source_cidrs": "{{user `temporary_security_group_source_cidrs`}}",
-            "associate_public_ip_address": "{{user `associate_public_ip_address`}}",
-            "tags": {
-                "Name": "PackerAnsible-Apache"
-            }
+            "associate_public_ip_address": "{{user `associate_public_ip_address`}}"
         }
     ],
     "provisioners": [
