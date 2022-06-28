@@ -9,8 +9,8 @@
     - name: Install jupyter
       apt: name=jupyter-console update_cache=yes state=latest
 
-    - name: Install notebook
-      apt: name=notebook update_cache=yes state=latest
+    - name: Install tensorflox
+      apt: name=tensorflow update_cache=yes state=latest
         
       
       
