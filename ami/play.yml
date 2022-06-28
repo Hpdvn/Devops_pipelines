@@ -2,8 +2,22 @@
 - hosts: all
   become: yes
   tasks:
+     - name: cd to repo directory 
+        uses: actions/checkout@v3
+
     - name: Install Python3
       apt: name=python3 update_cache=yes state=latest
 
-    - name: Install Jupyter
-      apt: name=jupyter update_cache=yes state=latest
+      - name: Install jupyter
+      pip:
+        name: jupyter-console==5.0
+        virtualenv: "{{venv_dir}}"
+        virtualenv_python: python2.7
+
+      - name: Install notebook
+      pip:
+        name: notebook==4.2.1
+        virtualenv: "{{venv_dir}}"
+        virtualenv_python: python2.7
+      
+      
