@@ -9,7 +9,22 @@
     - name: Install jupyter
       apt: name=jupyter-console update_cache=yes state=latest
 
-  
+    - name: Install Python
+      yum: name="{{ item }}"
+      with_items:
+        - numpy
+        - python-devel
+        - python-pip
+
+    - name: Install Tensorflow dependancies
+      yum: name="{{ item }}"
+      with_items:
+        - freetype-devel
+        - libpng12-devel
+        - zip
+        - zlib-devel
+        - giflib-devel
+        - zeromq3-devel
         
       
       
