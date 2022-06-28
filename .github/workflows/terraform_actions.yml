@@ -58,9 +58,8 @@ jobs:
           cd ami
 
       - name: packer validate
-        run : |
-          ls
-          packer validate build_ami.json  
+        run :
+          packer validate ami\build_ami.json  
 
       - name: packer build
         run : |
