@@ -1,38 +1,8 @@
 name: Terraform actions
 on: push
 jobs:
-  tf:
-    runs-on: ubuntu-latest
-    env :
-      AWS_ACCESS_KEY_ID : ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY : ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-    steps:
-      - name: install terraform
-        run: |
-          curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
-          sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
-          sudo apt-get update && sudo apt-get install terraform
-          echo "Terraform installed"
 
-      - name: cd to repo directory 
-        uses: actions/checkout@v3
-
-      - name: ls
-        run : ls ${{ github.workspace }}
-
-      - name: terraform init
-        run: |
-          terraform init
-
-      - name: terraform plan
-        run: |
-          terraform plan
-
-      - name: terraform apply
-        run: |
-          terraform apply -auto-approve
-
-
+  
   create_ami:
     runs-on: ubuntu-latest
     env :
@@ -74,4 +44,37 @@ jobs:
           cd ami
           packer build build_ami.json
 
+
+
+
+  tf:
+    runs-on: ubuntu-latest
+    env :
+      AWS_ACCESS_KEY_ID : ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY : ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    steps:
+      - name: install terraform
+        run: |
+          curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+          sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+          sudo apt-get update && sudo apt-get install terraform
+          echo "Terraform installed"
+
+      - name: cd to repo directory 
+        uses: actions/checkout@v3
+
+      - name: ls
+        run : ls ${{ github.workspace }}
+
+      - name: terraform init
+        run: |
+          terraform init
+
+      - name: terraform plan
+        run: |
+          terraform plan
+
+      - name: terraform apply
+        run: |
+          terraform apply -auto-approve
 

@@ -4,7 +4,7 @@ module "ec2_instance" {
 
   name = "ec2-jupyter"
 
-  ami                    = "ami-052efd3df9dad4825"
+  ami                    = data.aws_ami.example.id
   instance_type          = "t2.micro"
   monitoring             = true
 
