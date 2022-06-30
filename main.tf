@@ -11,6 +11,10 @@ module "ec2_instance" {
   vpc_security_group_ids = [aws_security_group.ec2_instance_sg.id]
   subnet_id              = aws_subnet.my_subnet.id
 
+  user_data = <<EOF
+  jupyter notebook --no-browser
+  EOF
+
   tags = {
     Terraform   = "true"
   }
