@@ -7,7 +7,12 @@
       apt: name=python3 update_cache=yes state=latest
 
     - name: Install jupyter
-      apt: name=jupyter-console update_cache=yes state=latest
+      ansible.builtin.pip:
+        name: notebook
+    
+    - name: Install tensorflow
+      ansible.builtin.pip:
+        name: tensorflow
 
   
       
