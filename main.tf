@@ -12,6 +12,12 @@ module "ec2_instance" {
   subnet_id              = aws_subnet.my_subnet.id
 
   user_data = <<EOF
+  #!/bin/bash -xe
+  echo "c.NotebookApp.allow_origin = '*'" >> ~/.jupyter directory
+  echo "c.NotebookApp.ip" = '0.0.0.0'" >> ~/.jupyter directory
+  echo "c.NotebookApp.token = ''" >> ~/.jupyter directory
+  echo "c.NotebookApp.password = ''" >> ~/.jupyter directory
+
   jupyter notebook --no-browser
   EOF
 
